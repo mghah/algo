@@ -1,9 +1,6 @@
 #Uses python3
-import sys
 import math
 import statistics as stats
-
-# helper functions:
 
 # helper functions:
 def two_point_distance(p0,p1):
