@@ -74,37 +74,12 @@ def find_min_distance_in_rec(xy_arr_y_sorted,dmin):
         return math.inf
     
     if len(xy_arr_y_sorted) > 7:       
-#        for i in range(len(xy_arr_y_sorted)-7):
-#            dis_storage = []
-#            for j in range(1,8):
-#                d_i_ipj = two_point_distance(xy_arr_y_sorted[i],xy_arr_y_sorted[i+j])
-#                dis_storage.append(d_i_ipj)
-#            dis_storage_min = min(dis_storage)
-#            if dis_storage_min < dmin_rec:
-#                dmin_rec = dis_storage_min
         for i, pnt_i in enumerate(xy_arr_y_sorted[:-7]):
             dis_storage_min = min(two_point_distance(pnt_i, pnt_j) 
                                  for pnt_j in xy_arr_y_sorted[i+1:i+1+7])
             if dis_storage_min < dmin_rec:
                 dmin_rec = dis_storage_min
-#        dis_storage_min = min ( find_closest_distance_brute(xy_arr_y_sorted[i:i+8])
-#                                for i in range(len(xy_arr_y_sorted)-7) ) 
-#        if dis_storage_min < dmin_rec:
-#            dmin_rec = dis_storage_min        
-            
-#        for k in range(len(xy_arr_y_sorted)-7, len(xy_arr_y_sorted)-1):
-#            dis_storage = []
-#            for l in range(1,len(xy_arr_y_sorted)-k):
-#                d_k_kpl = two_point_distance(xy_arr_y_sorted[k], xy_arr_y_sorted[k+l])
-#                dis_storage.append(d_k_kpl)
-#            dis_storage_min = min(dis_storage)
-#            if dis_storage_min < dmin_rec:
-#                dmin_rec = dis_storage_min
                 
-#        for k, pnt_k in enumerate(xy_arr_y_sorted[-7:-1]):
-#            dis_storage_min_2 = min( two_point_distance(pnt_k, pnt_l) for pnt_l in xy_arr_y_sorted[k+1:])      
-#        if dis_storage_min_2 < dmin_rec:
-#            dmin_rec = dis_storage_min_2  
         dis_storage_min = find_closest_distance_brute(xy_arr_y_sorted[-7:])
         if dis_storage_min < dmin_rec:
             dmin_rec = dis_storage_min
@@ -113,14 +88,6 @@ def find_min_distance_in_rec(xy_arr_y_sorted,dmin):
             dis_storage_min = min( two_point_distance(pnt_k, pnt_l) for pnt_l in xy_arr_y_sorted[k+1:])      
             if dis_storage_min < dmin_rec:
                 dmin_rec = dis_storage_min 
-#        for m in range(0,len(xy_arr_y_sorted)-1):
-#            dis_storage = []
-#            for n in range (1,len(xy_arr_y_sorted)-m):
-#                d_m_mpn = two_point_distance(xy_arr_y_sorted[m], xy_arr_y_sorted[m+n])
-#                dis_storage.append(d_m_mpn)
-#            dis_storage_min = min(dis_storage)
-#            if dis_storage_min < dmin_rec:
-#                dmin_rec = dis_storage_min  
     
     return dmin_rec             
 
@@ -154,18 +121,9 @@ def find_closest_point(x_arr, y_arr):
 def minimum_distance(x, y):
     #write your code here
     return find_closest_point(x,y)
-
-#if __name__ == '__main__':
-#    input = sys.stdin.read()
-#    data = list(map(int, input.split()))
-#    n = data[0]
-#    x = data[1::2]
-#    y = data[2::2]
-#    print("{0:.9f}".format(minimum_distance(x, y)))
   
 def test_minimum_distance():
-#    x_arr = [7,1,4,7]
-#    y_arr = [7,100,8,7]
+    # correct answer is sqrt(2)
     x_arr = [4,-2,-3,-1,2,-4,1,-1,3,-4,-2]
     y_arr = [4,-2,-4,3,3,0,1,-1,-1,2,4]
     print ('combined array', combine_xy(x_arr, y_arr))
